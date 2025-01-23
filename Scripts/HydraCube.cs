@@ -5,7 +5,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Replicator))]
 [RequireComponent (typeof(Exploder))]
-public class Cube : MonoBehaviour
+public class HydraCube : MonoBehaviour
 {
     [SerializeField] private float _successChance = 1f;
     [SerializeField] private float _successChanceDivider = 2f;
@@ -22,6 +22,7 @@ public class Cube : MonoBehaviour
     private void OnMouseDown()
     {
         var value = Random.value;
+
         if (_successChance > value)
         {
             _successChance /= _successChanceDivider;
