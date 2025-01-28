@@ -11,9 +11,9 @@ public class Exploder : MonoBehaviour
     {
         foreach (GameObject affectedObject in affectedObjects)
         {
-            var rigitbody = affectedObject.GetComponent<Rigidbody>();
+            Rigidbody rigitbody;
 
-            if (rigitbody != null)
+            if (affectedObject.TryGetComponent(out rigitbody))
                 rigitbody.AddExplosionForce(_explosionForce, transform.position, _explosionRadius);
         }
     }
