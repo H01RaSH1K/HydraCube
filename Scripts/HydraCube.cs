@@ -33,6 +33,10 @@ public class HydraCube : MonoBehaviour
             List<HydraCube> replicates = _replicator.Replicate(this);
             _exploder.Explode(replicates.Select(replicate => replicate.gameObject));
         }
+        else
+        {
+            _exploder.Explode();
+        }
 
         Destroy(gameObject);
     }
