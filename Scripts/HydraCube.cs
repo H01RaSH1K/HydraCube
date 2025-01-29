@@ -18,6 +18,8 @@ public class HydraCube : MonoBehaviour
     private ColorChanger _colorChanger;
     private Exploder _exploder;
 
+    public float SuccessChance => _successChance;
+
     private void Awake()
     {
         _colorChanger = GetComponent<ColorChanger>();
@@ -28,7 +30,7 @@ public class HydraCube : MonoBehaviour
     {
         float value = Random.value;
 
-        if (_successChance > value)
+        if (SuccessChance > value)
         {
             List<HydraCube> replicates = _replicator.Replicate(this);
             _exploder.Explode(replicates.Select(replicate => replicate.gameObject));
@@ -45,7 +47,7 @@ public class HydraCube : MonoBehaviour
     {
         transform.localPosition = GetRandomOffsetPosition(parentCube);
         transform.localScale = parentCube.transform.localScale / _scaleDivider;
-        _successChance = parentCube._successChance / _successChanceDivider;
+        _successChance = parentCube.SuccessChance / _successChanceDivider;
         _colorChanger.SetRandomColor();
     }
 
